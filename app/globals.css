@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MINIMALIST DARK — NEGRO · DORADO · AZUL (paleta del cliente)
+   ------------------------------------------------------------
+   Profundidad atmosférica: capas de negro con subtono azul
+   (#05070D → #0A101C → #121A2C), dorado metálico como acento
+   principal (dinero, resultados, CTAs) y azul como acento frío
+   secundario (estructura, metadata, luz ambiental). Bordes al
+   8-15% de opacidad, tarjetas de vidrio, resplandores — nunca
+   sombras duras ni contraste agresivo.
+   ============================================================ */
+
+@theme inline {
+  /* Colores — Negro azulado en capas + dorado + azul */
+  --color-background: #05070d;        /* negro con subtono azul — la capa base */
+  --color-background-alt: #0a101c;    /* superficies ligeramente elevadas */
+  --color-foreground: #f7f9fc;        /* texto primario casi blanco, frío */
+  --color-muted: #121a2c;             /* tarjetas y superficies elevadas */
+  --color-muted-foreground: #8a94a8;  /* texto secundario azul-gris */
+  --color-accent: #d4af37;            /* dorado metálico — resultados y CTAs */
+  --color-accent-foreground: #05070d; /* texto oscuro sobre dorado */
+  --color-secondary: #60a5fa;         /* azul — acento frío secundario */
+
+  /* Tipografía — sans geométrica */
+  --font-display: "Space Grotesk Variable", system-ui, sans-serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  /* Animaciones utilitarias */
+  --animate-marquee: marquee 46s linear infinite;
+  --animate-breathe: breathe 16s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Respiración lenta de los orbes ambientales */
+@keyframes breathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.12) translateY(-2%); }
+}
+
+/* ─── Base ─────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+/* Foco accesible: anillo ámbar consistente en todo el sitio */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Ruido sutil — textura atmosférica, casi imperceptible */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Clases compuestas del sistema ────────────────────── */
+
+@layer components {
+  /* Micro-label: mono, mayúsculas, tracking amplio — metadata técnica */
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* Titulares: Space Grotesk, tracking apretado — nunca mayúsculas */
+  .display-heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  /* Cifras: Space Grotesk tabular — los números siguen siendo protagonistas */
+  .figure {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  /* Vidrio: superficie semitransparente con blur — la tarjeta canónica */
+  .glass {
+    background: color-mix(in srgb, var(--color-muted) 60%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Resplandor dorado — luz ambiental, nunca sombra dura */
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+  }
+
+  /* Barrido de brillo en el CTA — un destello metálico al hover */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, 0.35) 50%, transparent 75%);
+    transform: translateX(-130%);
+    transition: transform 0.7s ease;
+  }
+  .btn-shine:hover::after {
+    transform: translateX(130%);
+  }
+}
+
+/* Movimiento reducido: estados finales al instante */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee,
+  .animate-breathe {
+    animation: none;
+  }
+  .btn-shine::after {
+    display: none;
+  }
+}
