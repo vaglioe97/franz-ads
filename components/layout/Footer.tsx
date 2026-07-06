@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 const LINK =
   "text-sm text-muted-foreground transition-colors duration-200 " +
@@ -40,9 +41,9 @@ export default function Footer() {
           >
             WhatsApp +506 7104 8447
           </a>
-          <a className={LINK} href="#agenda">
+          <Link className={LINK} href="/contacto">
             Auditoría inicial
-          </a>
+          </Link>
         </div>
 
         <p className="mono-label text-muted-foreground/70 mt-12 text-[0.62rem]">

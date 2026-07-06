@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
@@ -44,6 +45,13 @@ export function Button({ variant, size, href, className, children, ...props }: B
   const classes = cn(buttonVariants({ variant, size }), className)
   if (href) {
     const { target, rel } = props
+    if (href.startsWith("/")) {
+      return (
+        <Link href={href} className={classes}>
+          {children}
+        </Link>
+      )
+    }
     return (
       <a href={href} target={target} rel={rel} className={classes}>
         {children}

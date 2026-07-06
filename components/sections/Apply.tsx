@@ -57,7 +57,7 @@ export default function Apply() {
 
       <div className="relative mx-auto max-w-4xl px-6 md:px-8">
         <SectionHead
-          index="07"
+          index="02"
           eyebrow="Auditoría inicial"
           title={<span id="agenda-title">Agendá tu sesión de auditoría inicial</span>}
           sub="Contame dónde está tu negocio hoy y a dónde lo querés llevar. En la sesión reviso tu situación, te digo con franqueza qué mejoraría y cómo trabajaríamos juntos."

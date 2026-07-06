@@ -39,12 +39,12 @@ export default function Method() {
   const reduced = useReducedMotion()
 
   return (
-    <section id="metodo" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="metodo-title">
+    <section id="ventajas" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="ventajas-title">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <SectionHead
-          index="03"
-          eyebrow="Más rentable que una agencia"
-          title={<span id="metodo-title">Por qué trabajar conmigo y no con una agencia</span>}
+          index="02"
+          eyebrow="Ventajas competitivas"
+          title={<span id="ventajas-title">Las ventajas de trabajar directo con el estratega</span>}
           sub="Soy una opción más rentable que cualquier agencia de marketing: atención directa del estratega, costos fijos y resultados que se miden todos los meses."
         />
 

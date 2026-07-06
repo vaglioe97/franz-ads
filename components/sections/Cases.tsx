@@ -2,6 +2,7 @@ import { SectionHead } from "@/components/ui/SectionHead"
 import { GlassCard } from "@/components/ui/GlassCard"
 import { Metric } from "@/components/ui/Metric"
 import { DeltaChip } from "@/components/ui/DeltaChip"
+import { BrandsMarquee } from "@/components/ui/BrandsMarquee"
 
 type CaseMetric = {
   label: string
@@ -77,22 +78,6 @@ const CASES: CaseStudy[] = [
   },
 ]
 
-/* Marcas globales gestionadas en agencia — la marquesina de credenciales */
-const BRANDS = [
-  "Unilever",
-  "Dove",
-  "Sedal",
-  "TRESemmé",
-  "Savilé",
-  "eGo",
-  "Chevrolet",
-  "Buick",
-  "GMC",
-  "Cadillac",
-  "Publicis Groupe",
-  "MullenLowe Group",
-]
-
 export default function Cases() {
   return (
     <section id="casos" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="casos-title">
@@ -106,23 +91,7 @@ export default function Cases() {
       </div>
 
       {/* Marquesina de marcas — credenciales en movimiento */}
-      <div className="overflow-hidden border-y border-white/8 py-4" aria-hidden="true">
-        <div className="animate-marquee flex w-max hover:[animation-play-state:paused]">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="flex items-center">
-              {BRANDS.map((brand) => (
-                <span
-                  key={`${copy}-${brand}`}
-                  className="mono-label text-muted-foreground flex items-center gap-3 pr-10 whitespace-nowrap"
-                >
-                  {brand}
-                  <span className="inline-block h-1 w-1 rounded-full bg-accent/40" />
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+      <BrandsMarquee />
 
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">

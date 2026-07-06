@@ -9,26 +9,30 @@ import {
   useScroll,
 } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const LINKS = [
-  { href: "#casos", label: "Resultados" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#metodo", label: "Por qué yo" },
-  { href: "#sobre", label: "Sobre Franz" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/", label: "Inicio" },
+  { href: "/resultados", label: "Resultados" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/sobre", label: "Sobre Franz" },
+  { href: "/contacto", label: "Contacto" },
 ]
 
 /**
  * Nav de vidrio fija que se retira al bajar y reaparece al subir.
- * Monograma en placa dorada tenue + enlaces discretos en gris.
+ * Monograma en placa dorada tenue + enlaces discretos en gris,
+ * con la página activa resaltada en blanco.
  */
 export default function Navbar() {
   const [hidden, setHidden] = useState(false)
   const [open, setOpen] = useState(false)
   const { scrollY } = useScroll()
   const reduced = useReducedMotion()
+  const pathname = usePathname()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious() ?? 0
@@ -45,8 +49,8 @@ export default function Navbar() {
         className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 md:px-8"
         aria-label="Navegación principal"
       >
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="group flex items-center gap-3 focus-visible:outline-none focus-visible:text-accent"
         >
           <Image
@@ -60,23 +64,31 @@ export default function Navbar() {
           <span className="font-display text-sm font-medium tracking-tight text-foreground">
             Franz Ads
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-7 lg:flex">
-          {LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-accent focus-visible:outline-none"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {LINKS.map((link) => {
+            const active = pathname === link.href
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`text-sm transition-colors duration-200 focus-visible:text-accent focus-visible:outline-none ${
+                    active
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
 
         <div className="hidden lg:block">
-          <Button href="#agenda" size="compact">
+          <Button href="/contacto" size="compact">
             Auditoría inicial
           </Button>
         </div>
@@ -101,19 +113,27 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <ul className="flex flex-col px-6 py-4">
-              {LINKS.map((link) => (
-                <li key={link.href} className="border-b border-white/5 last:border-b-0">
-                  <a
-                    href={link.href}
-                    className="block py-4 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:text-accent focus-visible:outline-none"
-                    onClick={() => setOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {LINKS.map((link) => {
+                const active = pathname === link.href
+                return (
+                  <li key={link.href} className="border-b border-white/5 last:border-b-0">
+                    <Link
+                      href={link.href}
+                      aria-current={active ? "page" : undefined}
+                      className={`block py-4 text-sm transition-colors focus-visible:text-accent focus-visible:outline-none ${
+                        active
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      onClick={() => setOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              })}
               <li className="pt-4 pb-2">
-                <Button href="#agenda" size="compact" className="w-full">
+                <Button href="/contacto" size="compact" className="w-full">
                   Auditoría inicial
                 </Button>
               </li>

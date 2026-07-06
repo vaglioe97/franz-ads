@@ -46,7 +46,7 @@ export default function Testimonials() {
     <section id="testimonios" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="testimonios-title">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <SectionHead
-          index="05"
+          index="02"
           eyebrow="Testimonios"
           title={<span id="testimonios-title">Lo que dicen quienes vieron los números</span>}
           sub="Mensajes reales de clientes activos — las cuentas y las cifras se pueden verificar."

@@ -135,10 +135,10 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-4"
           {...enter(d(0.75), reduced)}
         >
-          <Button href="#agenda" size="lg">
+          <Button href="/contacto" size="lg">
             Agendar auditoría inicial
           </Button>
-          <Button href="#casos" variant="outline" size="lg">
+          <Button href="/resultados" variant="outline" size="lg">
             Ver resultados reales
           </Button>
         </motion.div>

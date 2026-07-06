@@ -37,7 +37,7 @@ export default function About() {
 
       <div className="relative mx-auto max-w-6xl px-6 md:px-8">
         <SectionHead
-          index="04"
+          index="01"
           eyebrow="Operador, no intermediario"
           title={<span id="sobre-title">¿Quién es Franz Matamoros?</span>}
         />
