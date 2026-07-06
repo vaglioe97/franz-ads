@@ -41,7 +41,6 @@ export default function Faq() {
     <section id="faq" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="faq-title">
       <div className="mx-auto max-w-3xl px-6 md:px-8">
         <SectionHead
-          index="01"
           eyebrow="Antes de agendar"
           title={<span id="faq-title">Preguntas frecuentes</span>}
         />

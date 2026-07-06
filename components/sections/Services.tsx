@@ -47,7 +47,6 @@ export default function Services() {
     <section id="servicios" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="servicios-title">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <SectionHead
-          index="01"
           eyebrow="Servicios"
           title={<span id="servicios-title">¿Cuáles serían mis servicios?</span>}
           sub="No vendo horas ni entregables: diseño sistemas de adquisición de clientes. Pauta en Meta y TikTok, sistemas de contenido y, si lo necesitás, el equipo completo detrás."

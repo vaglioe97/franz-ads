@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { SectionHead } from "@/components/ui/SectionHead"
 import { Reveal } from "@/components/ui/Reveal"
 import { Metric } from "@/components/ui/Metric"
@@ -37,7 +38,6 @@ export default function About() {
 
       <div className="relative mx-auto max-w-6xl px-6 md:px-8">
         <SectionHead
-          index="01"
           eyebrow="Operador, no intermediario"
           title={<span id="sobre-title">¿Quién es Franz Matamoros?</span>}
         />
@@ -45,6 +45,17 @@ export default function About() {
         <div className="grid items-start gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           <Reveal>
             <div className="flex max-w-xl flex-col gap-6 text-foreground/85">
+              {/* El retrato — Franz de frente, con el glow dorado de la marca */}
+              <div className="relative mb-2 w-full max-w-sm overflow-hidden rounded-xl border border-white/8 shadow-[0_0_40px_rgba(212,175,55,0.12)]">
+                <Image
+                  src="/franz.jpeg"
+                  alt="Franz Matamoros, Paid Media Strategist y Growth Consultant"
+                  width={1067}
+                  height={1600}
+                  className="aspect-[4/5] h-auto w-full object-cover object-top"
+                  sizes="(min-width: 1024px) 384px, 100vw"
+                />
+              </div>
               <p>
                 Aprendí este oficio en agencias globales: gestioné cuentas de alto perfil de
                 General Motors para el mercado estadounidense y lideré la planificación de medios

@@ -109,7 +109,6 @@ export default function Evidence() {
     <section id="evidencia" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="evidencia-title">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <SectionHead
-          index="03"
           eyebrow="Evidencia"
           title={<span id="evidencia-title">Las conversaciones detrás de los números</span>}
           sub="Capturas reales de clientes y proyectos — arrastrá para recorrerlas o tocá una para verla completa. Cada cifra de esta página tiene un chat que la respalda."

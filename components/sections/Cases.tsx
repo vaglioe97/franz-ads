@@ -83,7 +83,6 @@ export default function Cases() {
     <section id="casos" className="scroll-mt-20 py-24 md:py-32" aria-labelledby="casos-title">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <SectionHead
-          index="01"
           eyebrow="Más ventas, más números"
           title={<span id="casos-title">Los números sobre la mesa</span>}
           sub="De cuentas de General Motors y Unilever en agencia global, a negocios locales que ven retorno en el primer mes. Casos reales, con cuentas y conversaciones verificables."
