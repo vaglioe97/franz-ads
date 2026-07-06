@@ -1,5 +1,6 @@
 import { SectionHead } from "@/components/ui/SectionHead"
 import { Reveal } from "@/components/ui/Reveal"
+import { withBasePath } from "@/lib/base-path"
 import { CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import {
   Stories,
@@ -126,7 +127,7 @@ export default function Evidence() {
               {SHOTS.map((shot) => (
                 <Story
                   key={shot.src}
-                  href={shot.src}
+                  href={withBasePath(shot.src)}
                   className="w-[230px] sm:w-[256px]"
                   aria-label={`${shot.client}: ${shot.caption}`}
                 >
