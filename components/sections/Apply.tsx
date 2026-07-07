@@ -74,20 +74,38 @@ export default function Apply() {
           </span>
         </Reveal>
 
-        <Reveal delay={0.2}>
-          <form
-            className="glass mx-auto mt-12 flex max-w-xl flex-col gap-7 rounded-xl p-8 text-left md:p-10"
-            noValidate
-            onSubmit={(e) => {
-              e.preventDefault()
-              const form = e.currentTarget
-              if (!form.checkValidity()) {
-                form.reportValidity()
-                return
-              }
-              form.reset()
-              setSent(true)
-            }}
+<Reveal delay={0.2}>
+  <form
+    className="glass mx-auto mt-12 flex max-w-xl flex-col gap-7 rounded-xl p-8 text-left md:p-10"
+    noValidate
+    onSubmit={async (e) => {
+      e.preventDefault()
+      const form = e.currentTarget
+      if (!form.checkValidity()) {
+        form.reportValidity()
+        return
+      }
+
+      const formData = new FormData(form)
+
+      try {
+        const response = await fetch("https://formspree.io/f/xjgqzavb", {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
+        })
+
+        if (response.ok) {
+          form.reset()
+          setSent(true)
+        } else {
+          // opcional: manejar error, ej. setError(true)
+          console.error("Formspree error:", await response.json())
+        }
+      } catch (error) {
+        console.error("Network error:", error)
+      }
+    }}
           >
             <div className="grid gap-7 md:grid-cols-2">
               <Field id="name" label="Nombre">
